@@ -5,6 +5,7 @@ aside {
     height: 100vh;
     width: 100%;
     max-width: 360px;
-    background-color: #626973aa;
+    background-color: #ffffffaa;
     backdrop-filter: blur(10px);
+    z-index: 10;
 }

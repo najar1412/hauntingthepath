@@ -1,13 +1,6 @@
-import {
-  Container,
-  Button,
-  Text,
-  Avatar,
-  Group,
-  Space,
-} from "@mantine/core";
+import { Container, Button, Text, Avatar, Group, Space } from "@mantine/core";
 
-export const SidebarItem = ({ site }) => {
+export const SidebarItem = ({ data, openModal }) => {
   return (
     <Container py={"2rem"}>
       <Group justify="space-between" opacity={0.8}>
@@ -22,7 +15,7 @@ export const SidebarItem = ({ site }) => {
             c={"var(--mantine-color-stone-mason-4)"}
             tt={"uppercase"}
           >
-            Alex
+            {data.pubDate}
           </Text>
         </div>
         <Text
@@ -30,21 +23,23 @@ export const SidebarItem = ({ site }) => {
           c={"var(--mantine-color-stone-mason-4)"}
           tt={"uppercase"}
         >
-          21 Mar 2023
+          {data.user}
         </Text>
       </Group>
       <Text tt={"uppercase"} fw={500} c={"var(--mantine-color-stone-mason-4)"}>
-        {site}
+        {data.title}
       </Text>
       <Space h="xs" />
-      <Text c="white" size={"xs"} lineClamp={3} fs="italic">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat.
+      <Text
+        c={"var(--mantine-color-stone-mason-4)"}
+        size={"xs"}
+        lineClamp={3}
+        fs="italic"
+      >
+        {data.content}
       </Text>
       <Space h="md" />
-      <Button size={"xs"} tt={"uppercase"}>
+      <Button size={"xs"} tt={"uppercase"} onClick={() => openModal()}>
         read more
       </Button>
     </Container>

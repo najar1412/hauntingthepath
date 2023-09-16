@@ -2,6 +2,10 @@ import { BackgroundImage, Avatar } from "@mantine/core";
 
 import mapImage from "../assets/tmp_map.jpg";
 
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+
+import styles from "./Map.module.css"
+
 const MapMarker = ({ lat, long }) => {
   return (
     <Avatar
@@ -12,24 +16,26 @@ const MapMarker = ({ lat, long }) => {
         top: `${lat}`,
         left: `${long}`,
         transform: "translate(-50%, -50%)",
-        backgroundColor: 'var(--mantine-color-stone-mason-2)'
+        backgroundColor: "var(--mantine-color-stone-mason-2)",
       }}
     />
   );
 };
 
-export const Map = () => {
+export const Map = ({articles}) => {
   return (
-    <BackgroundImage
-      h={"100vh"}
-      w={"100vw"}
-      src={mapImage}
-      style={{ position: "absolute", top: 0, left: 0, zIndex: -1, overflow: 'hidden' }}
-    >
-      <MapMarker lat={"12%"} long={"75%"} />
-      <MapMarker lat={"50%"} long={"12%"} />
-      <MapMarker lat={"25%"} long={"43%"} />
-      <MapMarker lat={"42%"} long={"91%"} />
-    </BackgroundImage>
+    <MapContainer className={styles.map} center={[51.505, -0.09]} zoom={13}>
+      <TileLayer
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      />
+
+      {articles.map(article => <Marker position={article.latLong}>
+        <Popup>
+          {article.title}
+        </Popup>
+      </Marker>)}
+      
+    </MapContainer>
   );
 };
