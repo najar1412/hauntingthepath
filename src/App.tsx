@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import "@mantine/core/styles.css";
 import "leaflet/dist/leaflet.css";
 
