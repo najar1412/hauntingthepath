@@ -39,7 +39,7 @@ export const SidebarItem = ({ data, openModal }) => {
         {data.content}
       </Text>
       <Space h="md" />
-      <Button size={"xs"} tt={"uppercase"} onClick={() => openModal()}>
+      <Button size={"xs"} tt={"uppercase"} onClick={() => openModal(data)}>
         read more
       </Button>
     </Container>

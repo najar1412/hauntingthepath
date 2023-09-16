@@ -19,8 +19,8 @@ export default function App() {
   const [postData, setPostData] = useState({});
   const [articles, setArticles] = useState([]);
 
-  const handleModal = () => {
-    // setPostData()
+  const handleModal = (article) => {
+    setPostData(article)
     open();
   };
 
